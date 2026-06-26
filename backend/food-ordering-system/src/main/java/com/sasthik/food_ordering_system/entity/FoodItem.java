@@ -3,13 +3,15 @@ package com.sasthik.food_ordering_system.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "food_items")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class FoodItem {
 
     @Id
@@ -31,4 +33,7 @@ public class FoodItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
+
+    @OneToMany(mappedBy = "foodItem", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems;
 }

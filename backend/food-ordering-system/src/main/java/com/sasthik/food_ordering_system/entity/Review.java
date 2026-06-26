@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
     name = "reviews",
     uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "restaurant_id"})
 )
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
